@@ -35,10 +35,10 @@ const io = socketio(server, {
 
 //app.listen(process.env.PORT, '0.0.0.0');
 
-app.use('/static', express.static(path.join(__dirname, "/static")));
- app.use('/socket.io', express.static(path.join(__dirname, "/socket.io")));
- app.use('/javascripts', express.static(path.join(__dirname, "/javascripts")));
-app.use('/stylesheets', express.static(path.join(__dirname, "/stylesheets")));
+app.use('/static', express.static(path.join(__dirname, "static")));
+ app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+ app.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
+app.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
  
 
 //server.listen(8080);
