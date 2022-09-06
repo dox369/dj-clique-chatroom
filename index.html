@@ -571,7 +571,7 @@ function sanitizeString(str){
 //=========================================================================================
 //=========================================================================================
 
-
+let io = require('socket.io').listen(server.listener);
 
 var socket = io.connect('http://dj-clique-chatroom-new.herokuapp.com:3000')
 
