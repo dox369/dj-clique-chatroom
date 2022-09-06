@@ -16,6 +16,21 @@ var express = require('express')
   
 var fs = require('fs'); // required for file serving
 
+const express = require("express")
+const app = express()
+const http = require("http")
+const server = http.createServer(app)
+
+
+const socketio = require('socket.io');
+
+const io = socketio(server, {
+    cors: {
+        origin: `https://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
+        methods: ["GET", "POST"],
+        credentials: true
+      }
+});
 
 
 //server.listen(3000);
@@ -24,6 +39,8 @@ server.listen(3000);
 //server.listen(8080);
 
 
+const path = require('path');
+ 
 // routing
 
 app.get('/', function (req, res) {
