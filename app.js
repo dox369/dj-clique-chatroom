@@ -16,8 +16,14 @@ var express = require('express')
 
   , server = http.createServer(app)
 
-  , io = require('socket.io').listen(server);
+ // , io = require('socket.io').listen(server);
   
+
+const io = require('socket.io')(server);
+
+server.listen(3000)
+
+
 var fs = require('fs'); // required for file serving
 
 
