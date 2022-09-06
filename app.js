@@ -13,6 +13,8 @@ const http = require("http")
 const server = http.createServer(app)
 
 
+const path = require('path');
+ 
 const socketio = require('socket.io');
 
 const io = socketio(server, {
@@ -42,8 +44,6 @@ app.use('/stylesheets', express.static(path.join(__dirname, "/stylesheets")));
 //server.listen(8080);
 
 
-const path = require('path');
- 
 // routing
 
 app.get('/', function (req, res) {
