@@ -7,7 +7,7 @@
           "forever-monitor": "^1.7.1",
           "fs": "0.0.1-security",
           "socket.io": "",
-          "http": "",
+          "http": ""
           
      },
      
