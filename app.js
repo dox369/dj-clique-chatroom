@@ -14,9 +14,9 @@ const fs = require('fs');
 app.use(express.static("public"))
 
 // define the first route
-app.get("/", function (req, res) {
-  res.send("<h1>Hello World!</h1>")
-})
+//app.get("/", function (req, res) {
+ // res.send("<h1>Hello World!</h1>")
+//})
 
 
 
@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 
 app.get('/', function (req, res) {
 
-  res.sendfile('/index.html');
+  res.sendfile(__dirname +'/index.html');
 
 });
 
