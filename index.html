@@ -971,8 +971,7 @@ window.onload = function(e){
 
 
 
-
-
+ 
 
 
 
@@ -982,9 +981,11 @@ window.onload = function(e){
 
 		alert(e.origin);
 		
-                if(e.origin !== 'https://dj-clique-chatroom-new.herokuapp.com' || e.origin !== 'https://djclique.com' ){ return; } 
+               //// if(e.origin !== 'https://dj-clique-chatroom-new.herokuapp.com' && e.origin !== 'https://djclique.com' ){ return; } 
 
                alert(e.data);
+		
+		
 		/////////////////console.log(e.data);
 		currentTrackTime = e.data;
 
