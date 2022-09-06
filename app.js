@@ -5,9 +5,9 @@ const http = require("https")
 const server = http.createServer(app)
 //const server  = app.listen(2095);
 
-//const io = require('socket.io')(server);
+const io = require('socket.io')(server);
 //const io = require('socket.io').listen(server);
-const io = require('socket.io').listen();
+//const io = require('socket.io').listen();
 
 const fs = require('fs');
 
