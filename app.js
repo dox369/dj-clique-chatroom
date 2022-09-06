@@ -259,7 +259,7 @@ io.on('connection', function(socket){
 
 var port = process.env.PORT || 3000;
 
-app.listen(3000, "0.0.0.0", function() {
+app.listen(port, "0.0.0.0", function() {
 console.log("Listening on Port " +  process.env.PORT);
 });
 
