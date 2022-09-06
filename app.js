@@ -21,12 +21,7 @@ const path = require('path');
 
 
 
-app.use(express.static(__dirname + "/public", {
-    index: false, 
-    immutable: true, 
-    cacheControl: true,
-    maxAge: "30d"
-}));
+app.use('/public', express.static(path.join(__dirname, "public")));
  
 // define the first route
 //app.get("/", function (req, res) {
