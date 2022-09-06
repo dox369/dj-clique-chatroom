@@ -19,7 +19,9 @@ const socketio = require('socket.io');
 
 const io = socketio(server, {
     cors: {
-        origin: `http://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
+        ///origin: `http://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
+	    
+	    origin: `https://dj-clique.com`,
         methods: ["GET", "POST"],
         credentials: true
       }
