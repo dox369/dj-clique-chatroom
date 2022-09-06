@@ -646,7 +646,7 @@ socket.on('connect', function () {
 
 			////alert('thisvid2:'+thisVid2);
 
-			top.postMessage("sendvid-"+thisVid2, 'http://djclique.com');
+			top.postMessage("sendvid-"+thisVid2, 'https://djclique.com');
 			
 		}
 		if (data.indexOf("seekTo") >= 0 )   {
@@ -659,67 +659,67 @@ socket.on('connect', function () {
 
 			////alert('thisvid2:'+thisVid2);
 
-			top.postMessage("seekTo-"+thisTime2, 'http://djclique.com');
+			top.postMessage("seekTo-"+thisTime2, 'https://djclique.com');
 			
 		}
 		if (data.indexOf("play99") >= 0 )   {
-			//top.postMessage(currentTrackTime, 'http://djclique.com');
-			top.postMessage("playVideo", 'http://djclique.com');
+			//top.postMessage(currentTrackTime, 'https://djclique.com');
+			top.postMessage("playVideo", 'https://djclique.com');
 
 		}
 		if (data.indexOf("pause99") >= 0 )   {
 
-			top.postMessage("pauseVideo", 'http://djclique.com');
+			top.postMessage("pauseVideo", 'https://djclique.com');
 
 		}
 		if (data.indexOf("seek99") >= 0 || data.indexOf("seekVideo") >= 0 )   {
 
-			//top.postMessage("seekVideo-"+currentTrackTime, 'http://djclique.com');
+			//top.postMessage("seekVideo-"+currentTrackTime, 'https://djclique.com');
 
 		}
 		if (data.indexOf("next99") >= 0 )   {
 
-			top.postMessage("nextVideo", 'http://djclique.com');
+			top.postMessage("nextVideo", 'https://djclique.com');
 
 		}
 		if (data.indexOf("prev99") >= 0 )   {
 
-			top.postMessage("prevVideo", 'http://djclique.com');
+			top.postMessage("prevVideo", 'https://djclique.com');
 
 		}
 		if (data.indexOf("load99") >= 0 )   {
 
-			top.postMessage("loadList", 'http://djclique.com');
+			top.postMessage("loadList", 'https://djclique.com');
 
 		}
 		if (data.indexOf("queue99") >= 0 )   {
 
-			top.postMessage("queueList", 'http://djclique.com');
+			top.postMessage("queueList", 'https://djclique.com');
 
 		}
 		if (data.indexOf("fetch99") >= 0 )   {
 
-			top.postMessage("fetchList", 'http://djclique.com');
+			top.postMessage("fetchList", 'https://djclique.com');
 
 		}
 		if (data.indexOf("refresh99") >= 0 )   {
 
-			top.postMessage("refreshPage", 'http://djclique.com');
+			top.postMessage("refreshPage", 'https://djclique.com');
 
 		}
 		if (data.indexOf("mute99") >= 0 )   {
 
-			top.postMessage("mute", 'http://djclique.com');
+			top.postMessage("mute", 'https://djclique.com');
 
 		}
 		if (data.indexOf("unmute99") >= 0 )   {
 
-			top.postMessage("unmute", 'http://djclique.com');
+			top.postMessage("unmute", 'https://djclique.com');
 
 		}
 		if (data.indexOf("keepAlive99") >= 0 )   {
 
-			top.postMessage("keepAlive", 'http://djclique.com');
+			top.postMessage("keepAlive", 'https://djclique.com');
 
 		} 
 
@@ -729,22 +729,22 @@ socket.on('connect', function () {
 
 		if (data.indexOf("repeatOn99") >= 0 )   {
 
-			top.postMessage("repeatOn", 'http://djclique.com');
+			top.postMessage("repeatOn", 'https://djclique.com');
 
 		}
 		if (data.indexOf("repeatOff99") >= 0 )   {
 
-			top.postMessage("repeatOff", 'http://djclique.com');
+			top.postMessage("repeatOff", 'https://djclique.com');
 
 		}
 		if (data.indexOf("shuffleOn99") >= 0 )   {
 
-			top.postMessage("shuffleOn", 'http://djclique.com');
+			top.postMessage("shuffleOn", 'https://djclique.com');
 
 		}
 		if (data.indexOf("shuffleOff99") >= 0 )   {
 
-			top.postMessage("shuffleOff", 'http://djclique.com');
+			top.postMessage("shuffleOff", 'https://djclique.com');
 
 		}  
 		
@@ -774,7 +774,7 @@ if (data != '' && data.indexOf("TrackTimeID") ==-1 && data.indexOf("pause99") ==
 		$('#conversation').emoticonize();
 
 
-	playSound('http://djclique.com/bing');
+	playSound('https://djclique.com/bing');
 
 	}
 
@@ -944,10 +944,10 @@ window.onload = function(e){
     <script>
 
 
-           //top.postMessage('hello', 'http://djclique.com');
+           //top.postMessage('hello', 'https://djclique.com');
 
 ////window.onload = function () {
-		//top.postMessage(currentTrackTime, 'http://djclique.com');
+		//top.postMessage(currentTrackTime, 'https://djclique.com');
 ///};
 
 
@@ -962,7 +962,7 @@ window.onload = function(e){
 
           function (e) {
 
-                if(e.origin !== 'http://djclique.com'){ return; } 
+                if(e.origin !== 'https://djclique.com'){ return; } 
 
                //alert(e.data);
 		/////////////////console.log(e.data);
