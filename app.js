@@ -17,6 +17,12 @@ const server = express()
 const io = socketIO(server);
 
 
+express.use('/static', express.static(path.join(__dirname, "static")));
+ express.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+ express.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
+express.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
+ 
+
 
 
 
