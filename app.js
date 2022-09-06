@@ -11,11 +11,12 @@ const path = require('path');
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 
+.use(express.static(path.join(__dirname, 'static')))
 
-.use('/static', express.static(path.join(__dirname, "static")))
- .use('/socket.io', express.static(path.join(__dirname, "socket.io")))
- .use('/javascripts', express.static(path.join(__dirname, "javascripts")))
- .use('/stylesheets', express.static(path.join(__dirname, "stylesheets")))
+//.use('/static', express.static(path.join(__dirname, "static")))
+// .use('/socket.io', express.static(path.join(__dirname, "socket.io")))
+// .use('/javascripts', express.static(path.join(__dirname, "javascripts")))
+// .use('/stylesheets', express.static(path.join(__dirname, "stylesheets")))
  
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
