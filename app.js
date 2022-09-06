@@ -31,7 +31,7 @@ const port = process.env.PORT || 3000;
 //server.listen(3000);
 //server.listen(3000);
 
-server.listen(process.env.PORT, '0.0.0.0');
+app.listen(process.env.PORT, '0.0.0.0');
 
 //server.listen(8080);
 
