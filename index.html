@@ -1,13 +1,5 @@
- <html>
+<html>
 <head>
-
-<script>
-	//var data;
-	</script>
-	
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6347867600463953"
-     crossorigin="anonymous"></script>
-
 
 
   <style>
@@ -18,12 +10,12 @@
 
       body { font: 13px Helvetica, Arial; }
 
-      form { background: #DDDDDD; padding: 3px;  bottom: 0; width: 100%; position: fixed;}
+      form { background: #000; padding: 3px;  bottom: 0; width: 100%; position: fixed;}
 //position: fixed;
 
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 
-      form button { width: 9%; background: #0074D9; border: none; padding: 10px; align:right; float:right; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; align:right; float:right; }
 
       #messages { list-style-type: none; margin: 0; padding: 0; }
 
@@ -309,7 +301,7 @@ ul {
 
 .inputMessage {
 
-  border: 10px solid #DDDDDD;
+  border: 10px solid #000;
 
   bottom: 0;
 
@@ -333,75 +325,6 @@ ul {
 
 
 
-a:link {
-
-    color: #0074D9; 
-
-    background-color: transparent; 
-
-    text-decoration: none;
-
-}
-
-
-
-a:visited {
-
-    color: #0074D9;
-
-    background-color: transparent;
-
-    text-decoration: none;
-
-}
-
-
-
-a:hover {
-
-    color: #0074D9;
-
-    background-color: transparent;
-
-    text-decoration: underline;
-
-}
-
-
-
-a:active {
-
-    color: #0074D9;
-
-    background-color: transparent;
-
-    text-decoration: underline;
-
-}
-
-::-webkit-scrollbar {
-
-    width: 12px;
-
-}
-
-::-webkit-scrollbar-track {
-
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-
-    border-radius: 10px;
-
-}
-
-::-webkit-scrollbar-thumb {
-
-    border-radius: 10px;
-
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-
-}
-
-
 
     </style>
 
@@ -409,40 +332,20 @@ a:active {
 
 
 
- <link rel="stylesheet" type="text/css" href="/style.css">
+ <link rel="stylesheet" type="text/css" href="http://162.248.247.18:3000/style.css">
 
 
 
-<script src="https://dj-clique-chatroom-new.herokuapp.com/socket.io/socket.io.js"  type="text/javascript"></script>
+<script src="/socket.io/socket.io.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
-<script src="https://dj-clique-chatroom-new.herokuapp.com/static/javascripts/jquery.cssemoticons.js" type="text/javascript"></script>
-<link href="https://dj-clique-chatroom-new.herokuapp.com/static/stylesheets/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />
-
-
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<style>
-body {
-	font-family: 'Roboto', sans-serif,arial;
-}
-</style>
+<script src="http://djclique.com/javascripts/jquery.cssemoticons.js" type="text/javascript"></script>
+<link href="http://djclique.com/stylesheets/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />
 
 
 </head>
 <body>
-
-
-
-<script>
-
-
-
-
-
-//--------------------------------------------------------------
-
-</script>
 
        <script type="text/javascript">
 
@@ -453,7 +356,9 @@ body {
              */
 
             function playSound(filename){   
-                document.getElementById("sound").innerHTML='<audio autoplay="autoplay" ><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3" /></audio>';
+
+                document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3" /></audio>';
+
             }
 
 
@@ -461,7 +366,136 @@ body {
         </script>
 
 
- 
+
+<script>
+
+//========================================================================================
+//========================================================================================
+//========================================================================================
+
+
+
+ //========================================================================================
+//========================================================================================
+//========================================================================================
+
+
+
+var currentVid;
+var currentVid2;
+
+
+function sendPause(){
+	document.getElementById("data").value = 'pause99';
+	document.getElementById("datasend").click();
+}
+function sendPlay(){
+	document.getElementById("data").value = 'play99';
+	document.getElementById("datasend").click();
+}
+function sendSeek(t){
+	//document.getElementById("data").value = 'seek99-'+t;
+	//document.getElementById("datasend").click();
+}
+function sendNext(){
+	document.getElementById("data").value = 'next99';
+	document.getElementById("datasend").click();
+}
+function sendPrev(){
+	document.getElementById("data").value = 'prev99';
+	document.getElementById("datasend").click();
+}
+function sendLoad(){
+	document.getElementById("data").value = 'load99';
+	document.getElementById("datasend").click();
+}
+
+function sendQueue(){
+	document.getElementById("data").value = 'queue99';
+	document.getElementById("datasend").click();
+}
+
+function sendFetch(){
+	document.getElementById("data").value = 'fetch99';
+	document.getElementById("datasend").click();
+}
+
+function sendRefresh(){
+	document.getElementById("data").value = 'refresh99';
+	document.getElementById("datasend").click();
+}
+
+function sendMute(){
+	document.getElementById("data").value = 'mute99';
+	document.getElementById("datasend").click();
+}
+
+function sendUnmute(){
+	document.getElementById("data").value = 'unmute99';
+	document.getElementById("datasend").click();
+}
+
+function repeatOn(){
+	document.getElementById("data").value = 'repeatOn99';
+	document.getElementById("datasend").click();
+}
+
+function repeatOff(){
+	document.getElementById("data").value = 'repeatOff99';
+	document.getElementById("datasend").click();
+}
+
+function shuffleOn(){
+	document.getElementById("data").value = 'shuffleOn99';
+	document.getElementById("datasend").click();
+}
+
+function shuffleOff(){
+	document.getElementById("data").value = 'shuffleOff99';
+	document.getElementById("datasend").click();
+}
+
+function keepAlive(){
+	document.getElementById("data").value = 'keepAlive99';
+	document.getElementById("datasend").click();
+}
+//------------------------------------------
+
+function sendVid(vid){
+
+var tempVid2
+	if (vid.indexOf("sendvid") >= 0) {
+			tempVid2 = vid;
+			tempVid2 = tempVid2.slice(8);
+			//alert(tempVid2);
+
+		}
+
+	document.getElementById("data").value = 'sendvid-'+tempVid2;
+	document.getElementById("datasend").click();
+}
+
+function seekTo(t){
+
+var tempTime2
+
+	if (t.indexOf("seekTo") >= 0) {
+			tempTime2 = t;
+			tempTime2 = tempTime2.slice(7);
+			//alert(tempTime2);
+
+		}
+
+	document.getElementById("data").value = 'seekTo-'+tempTime2;
+	document.getElementById("datasend").click();
+}
+
+
+//========================================================================================
+//========================================================================================
+//========================================================================================
+</script>
+
 
 
 <script>
@@ -539,12 +573,8 @@ function sanitizeString(str){
 
 
 
-//var socket = io.connect('https://dj-clique-chatroom-new.herokuapp.com/')
-//var socket = io.connect()
+var socket = io.connect('ws://dj-clique-chatroom-new.herokuapp.com:8080')
 
-	var socket = io.connect('https://dj-clique-chatroom-new.herokuapp.com:8080')
-	
-	//this.socket = io('https://dj-clique-chatroom-new.herokuapp.com/')
 
 
 var tryReconnect = function(){
@@ -581,7 +611,7 @@ socket.on('connect', function () {
 	socket.emit('switchRoom', thisOne);
 
 
-	///////////////console.log(thisOne);
+	console.log(thisOne);
 	clearInterval(intervalID);
 
 
@@ -592,16 +622,268 @@ socket.on('connect', function () {
 
 
 //=========================================================================================
- 
+//=========================================================================================
+
+
+
+	// listener, whenever the server emits 'updatechat', this updates the chat body
+
+	socket.on('updatechat', function (username, data) {
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+//-------------------------------------------------------
+
+		if (data.indexOf("sendvid") >= 0 )   {
+
+			//alert(data);
+			//var thisVid2;
+			var thisVid2 = data;
+
+			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendvid-") + 8);
+
+			////alert('thisvid2:'+thisVid2);
+
+			top.postMessage("sendvid-"+thisVid2, 'http://djclique.com');
+			
+		}
+		if (data.indexOf("seekTo") >= 0 )   {
+
+			//alert(data);
+			//var thisTime2;
+			var thisTime2 = data;
+
+			thisTime2 = thisTime2.substring(thisTime2.indexOf("seekTo-") + 7);
+
+			////alert('thisvid2:'+thisVid2);
+
+			top.postMessage("seekTo-"+thisTime2, 'http://djclique.com');
+			
+		}
+		if (data.indexOf("play99") >= 0 )   {
+			//top.postMessage(currentTrackTime, 'http://djclique.com');
+			top.postMessage("playVideo", 'http://djclique.com');
+
+		}
+		if (data.indexOf("pause99") >= 0 )   {
+
+			top.postMessage("pauseVideo", 'http://djclique.com');
+
+		}
+		if (data.indexOf("seek99") >= 0 || data.indexOf("seekVideo") >= 0 )   {
+
+			//top.postMessage("seekVideo-"+currentTrackTime, 'http://djclique.com');
+
+		}
+		if (data.indexOf("next99") >= 0 )   {
+
+			top.postMessage("nextVideo", 'http://djclique.com');
+
+		}
+		if (data.indexOf("prev99") >= 0 )   {
+
+			top.postMessage("prevVideo", 'http://djclique.com');
+
+		}
+		if (data.indexOf("load99") >= 0 )   {
+
+			top.postMessage("loadList", 'http://djclique.com');
+
+		}
+		if (data.indexOf("queue99") >= 0 )   {
+
+			top.postMessage("queueList", 'http://djclique.com');
+
+		}
+		if (data.indexOf("fetch99") >= 0 )   {
+
+			top.postMessage("fetchList", 'http://djclique.com');
+
+		}
+		if (data.indexOf("refresh99") >= 0 )   {
+
+			top.postMessage("refreshPage", 'http://djclique.com');
+
+		}
+		if (data.indexOf("mute99") >= 0 )   {
+
+			top.postMessage("mute", 'http://djclique.com');
+
+		}
+		if (data.indexOf("unmute99") >= 0 )   {
+
+			top.postMessage("unmute", 'http://djclique.com');
+
+		}
+		if (data.indexOf("keepAlive99") >= 0 )   {
+
+			top.postMessage("keepAlive", 'http://djclique.com');
+
+		} 
+
+//-------------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------------
+
+		if (data.indexOf("repeatOn99") >= 0 )   {
+
+			top.postMessage("repeatOn", 'http://djclique.com');
+
+		}
+		if (data.indexOf("repeatOff99") >= 0 )   {
+
+			top.postMessage("repeatOff", 'http://djclique.com');
+
+		}
+		if (data.indexOf("shuffleOn99") >= 0 )   {
+
+			top.postMessage("shuffleOn", 'http://djclique.com');
+
+		}
+		if (data.indexOf("shuffleOff99") >= 0 )   {
+
+			top.postMessage("shuffleOff", 'http://djclique.com');
+
+		}  
+		
+		
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+		
+
+if (data != '' && data.indexOf("TrackTimeID") ==-1 && data.indexOf("pause99") ==-1 && data.indexOf("play99") ==-1 && data.indexOf("next99") ==-1 && data.indexOf("prev99") ==-1 && data.indexOf("onevid99") ==-1  && data.indexOf("load99") ==-1 && data.indexOf("sendvid") == -1 && data.indexOf("seekTo") == -1 && data.indexOf("repeatOn99") == -1 && data.indexOf("repeatOff99") == -1 && data.indexOf("shuffleOn99") == -1  && data.indexOf("shuffleOff99") == -1  && data.indexOf("keepAlive99") == -1 )   {
+
+
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+
+	
+
+
+		$('#conversation').append('<b>'+escapeOutput(username) + ':</b> ' + escapeOutput(data) + '<br>');
+
+		 ///$conversation[0].scrollTop = $conversation[0].scrollHeight;
+		window.scrollTo(0, document.body.scrollHeight);
+		$('#conversation').emoticonize();
+
+
+	playSound('http://djclique.com/bing');
+
+	}
+
+
+
+	});
+
+
+
+//=========================================================================================
+//=========================================================================================
+//=========================================================================================
+
+
+
+	// listener, whenever the server emits 'updaterooms', this updates the room the client is in
+
+	socket.on('updaterooms', function(rooms, current_room) {
+
+		$('#rooms').empty();
+
+		$.each(rooms, function(key, value) {
+
+			if(value == current_room){
+
+				$('#rooms').append('<div>' + value + '</div>');
+
+			}
+
+			else {
+
+				$('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+
+			}
+
+		});
+
+	});
+
+
+
+	function switchRoom(room){
+
+		//socket.emit('switchRoom', thisOne);
+		socket.emit('switchRoom', room);
+
+	}
+
+	
+
+	// on load of page
+
+	$(function(){
+
+		// when the client clicks SEND
+
+		$('#datasend').click( function() {
+
+			var message = $('#data').val();
+
+			$('#data').val('');
+
+			// tell server to execute 'sendchat' and send along one parameter
+			if (message != ''){
+
+				socket.emit('sendchat', message);
+			}
+
+		});
+
+
+
+		// when the client hits ENTER on their keyboard
+
+		$('#data').keypress(function(e) {
+
+			if(e.which == 13) {
+
+				$(this).blur();
+
+				$('#datasend').focus().click();
+				$('#data').focus().click();
+				
+
+			}
+
+		});
+
+	});
+
+
+
+
+
+
+window.onload = function(e){ 
+	switchRoom(thisOne);
+	$('#data').focus().click();
+	//alert(thisOne);
+}
+
+
+
 //////}
 ///////connect();
 
 </script>
 
 
-<div style="position:fixed;left:0px;top:0px;background-color:#DDDDDD;width:100%;padding-left:20px;padding:10px;opacity:.9;border-radius:  5px 5px;border-bottom-right-radius: 0px;border-top-right-radius: 0px;" align="center">
-<strong>CHATROOM</strong>
-</div>
 
 <!--
 
@@ -613,10 +895,10 @@ socket.on('connect', function () {
 
 </div>
 -->
-<br><br><br>
 
 
-<div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;padding-bottom:100px;padding-top:40px;">
+
+<div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;padding-bottom:100px;">
 
 	<div id="conversation" style="padding-bottom:60px;"></div>
 
@@ -641,16 +923,6 @@ socket.on('connect', function () {
 
  <input id="data" size="50" name="data" autocomplete="off" placeholder="Type your message here" />
 
-<!-- <input type="file" id="myFile"> -->
-
-<small><small>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:void(0);" onclick="alert('send giphy');">GIF</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:void(0);" onclick="alert('send voice clip');">VOICE CLIP</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:void(0);" onclick="alert('send pic');">UPLOAD</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:void(0);" onclick="alert('send emoticon');">EMOTICON</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:void(0);" onclick="alert('send sticker');">STICKER</a>
-</small></small>
 
  <button name="datasend" id="datasend" onclick="return false;">&rArr;</button>
 
@@ -659,605 +931,10 @@ socket.on('connect', function () {
     </form>
 
 
-<!--
 
-<script>
 
-var ctx = document.getElementById('conversation').getContext('2d');
 
 
-
-// ...
-
-
-
-socket.on("image", function(info) {
-
-  if (info.image) {
-
-    var img = new Image();
-
-    img.src = 'data:image/jpeg;base64,' + info.buffer;
-
-    ctx.drawImage(img, 0, 0);
-
-  }
-
-});
-
-</script>
-
--->
-
-
-
-
-
-
-
-<script>
-
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-
-
-var currentVid;
-var currentVid2;
-
-
-function sendPause(){
-	document.getElementById("message").value = 'pause99';
-	document.getElementById("sendBtn").click();
-}
-function sendPlay(){
-	document.getElementById("message").value = 'play99';
-	document.getElementById("sendBtn").click();
-}
-function sendSeek(t){
-	//document.getElementById("message").value = 'seek99-'+t;
-	//document.getElementById("sendBtn").click();
-}
-function sendNext(){
-	document.getElementById("message").value = 'next99';
-	document.getElementById("sendBtn").click();
-}
-function sendPrev(){
-	document.getElementById("message").value = 'prev99';
-	document.getElementById("sendBtn").click();
-}
-function sendLoad(){
-	document.getElementById("message").value = 'load99';
-	document.getElementById("sendBtn").click();
-}
-
-function sendQueue(){
-	document.getElementById("message").value = 'queue99';
-	document.getElementById("sendBtn").click();
-}
-
-function sendFetch(){
-	document.getElementById("message").value = 'fetch99';
-	document.getElementById("sendBtn").click();
-}
-
-function sendRefresh(){
-	document.getElementById("message").value = 'refresh99';
-	document.getElementById("sendBtn").click();
-}
-
-function sendMute(){
-	document.getElementById("message").value = 'mute99';
-	document.getElementById("sendBtn").click();
-}
-
-function sendUnmute(){
-	document.getElementById("message").value = 'unmute99';
-	document.getElementById("sendBtn").click();
-}
-
-function repeatOn(){
-	document.getElementById("message").value = 'repeatOn99';
-	document.getElementById("sendBtn").click();
-}
-
-function repeatOff(){
-	document.getElementById("message").value = 'repeatOff99';
-	document.getElementById("sendBtn").click();
-}
-
-function shuffleOn(){
-	document.getElementById("message").value = 'shuffleOn99';
-	document.getElementById("sendBtn").click();
-}
-
-function shuffleOff(){
-	document.getElementById("message").value = 'shuffleOff99';
-	document.getElementById("sendBtn").click();
-}
-
-function keepAlive(){
-	document.getElementById("message").value = 'keepAlive99';
-	document.getElementById("sendBtn").click();
-}
-//------------------------------------------
-
-function sendVid(vid){
-
-var tempVid2
-	if (vid.indexOf("sendvid") >= 0) {
-			tempVid2 = vid;
-			tempVid2 = tempVid2.slice(8);
-			//alert(tempVid2);
-
-		}
-
-	document.getElementById("message").value = 'sendvid-'+tempVid2;
-	document.getElementById("sendBtn").click();
-}
-
-function seekTo(t){
-
-var tempTime2
-
-	if (t.indexOf("seekTo") >= 0) {
-			tempTime2 = t;
-			tempTime2 = tempTime2.slice(7);
-			//alert(tempTime2);
-
-		}
-
-	document.getElementById("message").value = 'seekTo-'+tempTime2;
-	document.getElementById("sendBtn").click();
-}
-
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-
-</script>
-
-
-
-
-<script>
-
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-
-
-
-
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-//================================================================================
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
- 
-
-    <script>
-
-
-
-/**
-
- * Get the value of a querystring
-
- * @param  {String} field The field to get the value of
-
- * @param  {String} url   The URL to get the value from (optional)
-
- * @return {String}       The field value
-
- */
-
-var getQueryString = function ( field, url ) {
-
-    var href = url ? url : window.location.href;
-
-    var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
-
-    var string = reg.exec(href);
-
-    return string ? string[1] : null;
-
-};
-
-
-	var thisOne = getQueryString('room'); 
-	var myUserId = getQueryString('userid'); 
-
-//alert(thisOne);
-
-//---------------------------------------------------------
-
-
-//========================================================
-
-function escapeOutput(toOutput){
-
-    return toOutput.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#x27').replace('/','&#x2F');
-
-}
-
-var currentTrackTime = 0;
-var currentVideoid;
-//var numClients = 0;
-
-function getRandomizer(bottom, top) {
-
-    return function() {
-
-        return Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
-
-    }
-
-}
-//-------------------------------------------------------
-
-function sanitizeString(str){
-
-    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
-
-    return str.trim();
-
-}
-
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-
-function connect(){
-
-
-        websocket = new WebSocket("ws://162.248.247.18:5060/?room="+thisOne+"&userid="+myUserId);
-
-        $('form').submit(function() {
-
-	
-
-            name = $('#name').val() ? $('#name').val() : 'Anonymous';
-
-            $('#name-div').hide();
-
-            $('#welcome').text('Hello ' + escapeOutput(name));
-
-if ($('#message').val() != ''){
-
-            websocket.send(JSON.stringify({
-
-                name:  name,
-
-                message: thisOne+'||'+myUserId+'||'+$('#message').val()
-
-            }));
-	}
-
-            $('#message').focus();
-
-            $('#message').val('');
-
-            return false;
-
-
-
-        });
-
-
-
- 
-
-        websocket.onmessage = function(evt) {
-		
-		//console.log(roomid);
-		
-//-------------------------------------------------------
-//-------------------------------------------------
-//-------------------------------------------------------
-
-		if (evt.data.indexOf("sendvid") >= 0 )   {
-
-			//alert(evt.data);
-			//var thisVid2;
-			var thisVid2 = evt.data;
-
-			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendvid-") + 8);
-
-			////alert('thisvid2:'+thisVid2);
-
-			top.postMessage("sendvid-"+thisVid2, 'http://djclique.com');
-			
-		}
-		if (evt.data.indexOf("seekTo") >= 0 )   {
-
-			//alert(evt.data);
-			//var thisTime2;
-			var thisTime2 = evt.data;
-
-			thisTime2 = thisTime2.substring(thisTime2.indexOf("seekTo-") + 7);
-
-			////alert('thisvid2:'+thisVid2);
-
-			top.postMessage("seekTo-"+thisTime2, 'http://djclique.com');
-			
-		}
-		if (evt.data.indexOf("play99") >= 0 )   {
-			//top.postMessage(currentTrackTime, 'http://djclique.com');
-			top.postMessage("playVideo", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("pause99") >= 0 )   {
-
-			top.postMessage("pauseVideo", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("seek99") >= 0 || evt.data.indexOf("seekVideo") >= 0 )   {
-
-			//top.postMessage("seekVideo-"+currentTrackTime, 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("next99") >= 0 )   {
-
-			top.postMessage("nextVideo", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("prev99") >= 0 )   {
-
-			top.postMessage("prevVideo", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("load99") >= 0 )   {
-
-			top.postMessage("loadList", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("queue99") >= 0 )   {
-
-			top.postMessage("queueList", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("fetch99") >= 0 )   {
-
-			top.postMessage("fetchList", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("refresh99") >= 0 )   {
-
-			top.postMessage("refreshPage", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("mute99") >= 0 )   {
-
-			top.postMessage("mute", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("unmute99") >= 0 )   {
-
-			top.postMessage("unmute", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("keepAlive99") >= 0 )   {
-
-			top.postMessage("keepAlive", 'http://djclique.com');
-
-		} 
-
-//-------------------------------------------------------
-//-------------------------------------------------
-//-------------------------------------------------------
-
-		if (evt.data.indexOf("repeatOn99") >= 0 )   {
-
-			top.postMessage("repeatOn", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("repeatOff99") >= 0 )   {
-
-			top.postMessage("repeatOff", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("shuffleOn99") >= 0 )   {
-
-			top.postMessage("shuffleOn", 'http://djclique.com');
-
-		}
-		if (evt.data.indexOf("shuffleOff99") >= 0 )   {
-
-			top.postMessage("shuffleOff", 'http://djclique.com');
-
-		}  
-		
-		
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-
-		if (evt.data.indexOf("TrackTimeID") ==-1 && evt.data.indexOf("pause99") ==-1 && evt.data.indexOf("play99") ==-1 && evt.data.indexOf("next99") ==-1 && evt.data.indexOf("prev99") ==-1 && evt.data.indexOf("onevid99") ==-1  && evt.data.indexOf("load99") ==-1 && evt.data.indexOf("sendvid") == -1 && evt.data.indexOf("seekTo") == -1 && evt.data.indexOf("repeatOn99") == -1 && evt.data.indexOf("repeatOff99") == -1 && evt.data.indexOf("shuffleOn99") == -1  && evt.data.indexOf("shuffleOff99") == -1  && evt.data.indexOf("keepAlive99") == -1 )   {
-
-
-            		$('#messages').append($('<li>').html(evt.data));
-			$('#messages').emoticonize();
-			
-
-			playSound('http://djclique.com/bing');
-		
-		} else {
-			//alert('postMessage/TrackTimeID is here...');
-		}
-
-		
-
-		//////console.log(evt.data);
-
-        };
-
- 
-
-        websocket.onerror = function(evt) {
-
-            $('#messages').append($('<li>').text('<span style="color: red;">ERROR:</span> ' + evt.data));
-
-        };
-
-
-
-        websocket.onopen = function(evt) {
-
-         websocket.send(JSON.stringify({
-
-                name: name,
-
-                message: '[user has connected]'
-
-            }));
-		
-		//parent.location.reload();
-		
-
-        };
-
-
-
-
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-
-
-  websocket.onclose = function(e) {
-
-    console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-	//alert('Disconnected from Server... attempting to reconnect...');
-
-    setTimeout(function() {
-
-      connect();
-	///parent.document.getElementById("playlist").data = "http://djclique.com/playlists/?room=<%=request.querystring("room")%>&userid=<%=request.querystring("userid")%>"
-
-    }, 1000);
-
-  };
-
-
-}
-connect();
-
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-
-function sendTime2(client){
-
-setInterval(function(){ 
-
-         websocket.send(JSON.stringify({
-
-                name: name,
-
-                message: 'TrackTimeID---'+currentTrackTime
-			// message: currentTrackTime
-
-            }));
-
-    //console.log('someTime');
-
-    //client.send('TrackTimeID---someTime');
-
-
-	//console.log('TTIME:'+parent.currentTrackTime);
-	//console.log('TTIME:'+currentTrackTime);
-
-
-
- }, 1000);
-
-}
-//sendTime2();
-
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-function test(){
-
-setInterval(function(){ 
-
-    //console.log('someTime');
-
-    //client.send('TrackTimeID---someTime');
-
-	//console.log('TTIME:'+parent.currentTrackTime);
-	//console.log('TTIME:'+currentTrackTime);
-
-	console(repeatStat);
-
- }, 1000);
-
-}
-//test();
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-//-------------------------------------------------------
-
-
-    </script>
 
 
 
@@ -1269,10 +946,15 @@ setInterval(function(){
 
            //top.postMessage('hello', 'http://djclique.com');
 
-
-window.onload = function () {
+////window.onload = function () {
 		//top.postMessage(currentTrackTime, 'http://djclique.com');
-};
+///};
+
+
+
+
+
+
 
 
 
@@ -1396,19 +1078,7 @@ window.onload = function () {
 
     </script>
 
-
-
-<script>
-//window.onload = function() {
-	//alert('player loaded successfully');
-//	parent.iframeLoaded = 1;
-//}
-
-</script>
 <div id="sound"></div>
-
-<div id="sound"></div>
-
 
 
 </body>
