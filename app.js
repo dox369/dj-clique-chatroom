@@ -3,55 +3,30 @@
 //========================================================================================
 //========================================================================================
 
- 
-  
-var fs = require('fs'); // required for file serving
+var express = require('express')
 
-const express = require("express")
-const app = express()
-const http = require("http")
-const server = http.createServer(app)
+  , app = express()
 
+  , http = require('http')
 
-const path = require('path');
- 
-const socketio = require('socket.io');
+  , server = http.createServer(app)
 
-const io = socketio(server, {
-    cors: {
-        ///origin: `http://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
-	    
-	    origin: `https://dj-clique.com`,
-        methods: ["GET", "POST"],
-        credentials: true
-      }
-});
-
-//const host = '0.0.0.0';
-//const port = process.env.PORT || 3000;
+  , io = require('socket.io').listen(server);
 
 
 
-//server.listen(3000);
-//server.listen(3000);
+server.listen(3000);
 
-//app.listen(process.env.PORT, '0.0.0.0');
-
-
-//server.listen(8080);
 
 
 // routing
 
 app.get('/', function (req, res) {
 
-  res.sendFile(__dirname + '/index.html');
-  
-  
+  res.sendfile(__dirname + '/index.html');
+
 });
 
- 
- 
 
 
 // usernames which are currently connected to the chat
@@ -69,7 +44,6 @@ var rooms = ['DJ Clique','Lobby','Admin','VIP'];
 
 
 //========================================================================================
-
 
 
 
@@ -114,10 +88,6 @@ var getQueryString = function ( field, url ) {
 
 	var thisOne = getQueryString('room'); 
 	var myUserId = getQueryString('userid'); 
-
-
-//var thisOne = 'test';
-//var myUserId = 1234;
 
 //alert(thisOne);
 
@@ -166,8 +136,6 @@ var getQueryString = function ( field, url ) {
 
 //========================================================================================
 	
-  
- 
 
 	// when the client emits 'sendchat', this listens and executes
 
@@ -175,7 +143,7 @@ var getQueryString = function ( field, url ) {
 
 		// we tell the client to execute 'updatechat' with 2 parameters
 
-		io.sockets.in(socket.room).emit('updatechat', socket.username, data)
+		io.sockets.in(socket.room).emit('updatechat', socket.username, data);
 
 	});
 
@@ -234,33 +202,3 @@ var getQueryString = function ( field, url ) {
 
 //========================================================================================
 //========================================================================================
-
-/*
-// trying to serve the image file from the server
-
-io.on('connection', function(socket){
-
-  fs.readFile(__dirname + '/images/image.jpg', function(err, buf){
-
-    // it's possible to embed binary data
-
-    // within arbitrarily-complex objects
-
-    socket.emit('image', { image: true, buffer: buf });
-
-    console.log('image file is initialized');
-
-  });
-
-});
-*/
-
-
-
-var port = process.env.PORT;
-
-app.listen(port, "0.0.0.0", function() {
-console.log("Listening on Port " +  process.env.PORT);
-});
-
-
