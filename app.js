@@ -21,7 +21,7 @@ const io = socketio(server, {
     cors: {
         ///origin: `http://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
 	    
-	    origin: `https://dj-clique.com`,
+	    origin: `https://dj-clique.com:3000`,
         methods: ["GET", "POST"],
         credentials: true
       }
