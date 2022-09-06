@@ -13,6 +13,19 @@ const path = require('path');
 // use the express-static middleware
 app.use(express.static("public"))
 
+
+app.get('/', (req, res, next) => {
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            name: 'dj-clique-chatroom',
+            version: '0.1.0'
+        }
+    });
+
+});
+
 // define the first route
 //app.get("/", function (req, res) {
  // res.send("<h1>Hello World!</h1>")
