@@ -39,6 +39,7 @@ const path = require('path');
 
 //app.use(express.static(__dirname + '/static'));
 app.use('/static', express.static(path.join(__dirname, "static")));
+ app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
  
 
 // define the first route
