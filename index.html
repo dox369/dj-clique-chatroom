@@ -549,8 +549,8 @@ function sanitizeString(str){
 
 
 
-var socket = io.connect('https://dj-clique-chatroom-new.herokuapp.com/')
-
+//var socket = io.connect('https://dj-clique-chatroom-new.herokuapp.com/')
+this.socket = io('https://dj-clique-chatroom-new.herokuapp.com/')
 
 
 var tryReconnect = function(){
