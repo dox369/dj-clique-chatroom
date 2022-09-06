@@ -15,8 +15,8 @@ const path = require('path');
  
 
 // use the express-static middleware
-app.use(express.static("public"))
-
+//app.use(express.static("public"))
+app.use(express.static(__dirname + '/public'));
 
 
 
