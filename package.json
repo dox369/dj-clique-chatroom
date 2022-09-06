@@ -1,0 +1,11 @@
+{
+     "name": "mukhin_chat",
+     "description": "example chat application with socket.io",
+     "version": "0.0.1",
+     "dependencies": {
+          "express": "",
+          "forever-monitor": "^1.7.1",
+          "fs": "0.0.1-security",
+          "socket.io": ""
+     }
+}
