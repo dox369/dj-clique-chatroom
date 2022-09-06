@@ -980,9 +980,9 @@ window.onload = function(e){
 
           function (e) {
 
-                if(e.origin !== 'https://dj-clique-chatroom-new.herokuapp.com'){ return; } 
+                if(e.origin !== 'https://dj-clique-chatroom-new.herokuapp.com' || e.origin !== 'https://djclique.com' ){ return; } 
 
-               //alert(e.data);
+               alert(e.data);
 		/////////////////console.log(e.data);
 		currentTrackTime = e.data;
 
