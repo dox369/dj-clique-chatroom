@@ -11,6 +11,17 @@ const path = require('path');
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 
+   .use((req, res) => res.sendFile("/static", { root: __dirname }))
+
+
+   .use((req, res) => res.sendFile("/socket.io", { root: __dirname }))
+
+
+   .use((req, res) => res.sendFile("/javascripts", { root: __dirname }))
+
+   .use((req, res) => res.sendFile("/stylesheets", { root: __dirname }))
+
+
 ////////////.use(express.static(path.join(__dirname, 'static')))
 
 //.use('/static', express.static(path.join(__dirname, "static")))
