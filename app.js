@@ -32,7 +32,7 @@ var fs = require('fs'); // required for file serving
 
 app.get('/', function (req, res) {
 
-  res.sendfile(__dirname + '/index.html');
+  res.sendfile('/index.html');
 
 });
 
