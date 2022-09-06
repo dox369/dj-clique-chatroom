@@ -23,8 +23,8 @@ const io = socketio(server, {
       }
 });
 
-const host = '0.0.0.0';
-const port = process.env.PORT || 3000;
+//const host = '0.0.0.0';
+//const port = process.env.PORT || 3000;
 
 
 
@@ -33,10 +33,6 @@ const port = process.env.PORT || 3000;
 
 //app.listen(process.env.PORT, '0.0.0.0');
 
-var port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", function() {
-console.log("Listening on Port 3000");
-});
 
 
 //server.listen(8080);
@@ -48,7 +44,7 @@ const path = require('path');
 
 app.get('/', function (req, res) {
 
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 
 });
 
@@ -257,3 +253,7 @@ io.on('connection', function(socket){
 
 
 
+var port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0", function() {
+console.log("Listening on Port 3000");
+});
