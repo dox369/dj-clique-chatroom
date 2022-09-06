@@ -25,8 +25,9 @@ const path = require('path');
  
 
 
-app.use(express.static(__dirname + '/static'));
-
+//app.use(express.static(__dirname + '/static'));
+app.use('/static', express.static(path.join(__dirname, "static")));
+ 
 
 // define the first route
 //app.get("/", function (req, res) {
