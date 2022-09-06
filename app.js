@@ -43,6 +43,15 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/', function (req, res) {
+
+  res.sendFile(path.join(__dirname + '/socket.io/socket.io.js'));
+
+});
+
+
+
+
 
 // usernames which are currently connected to the chat
 
