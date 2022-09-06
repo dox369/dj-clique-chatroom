@@ -12,9 +12,22 @@ const server = express()
 
 const io = socketIO(server);
 
+
+
+server.use('/static', express.static(path.join(__dirname, "static")));
+ server.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+ server.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
+server.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
+ 
+
+
+
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
+
+
+
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
