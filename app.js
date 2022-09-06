@@ -8,18 +8,12 @@ const INDEX = '/index.html';
 
 const path = require('path');
  
+
+
+
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-
-   .use((req, res) => res.sendFile("/static", { root: __dirname }))
-
-
-   .use((req, res) => res.sendFile("/socket.io", { root: __dirname }))
-
-
-   .use((req, res) => res.sendFile("/javascripts", { root: __dirname }))
-
-   .use((req, res) => res.sendFile("/stylesheets", { root: __dirname }))
+ 
 
 
 ////////////.use(express.static(path.join(__dirname, 'static')))
@@ -34,11 +28,11 @@ const server = express()
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
+var express = require('express'); 
+var app = express();
+app.use(express.static(__dirname + '/static'));
 
-
-const app = express()
-
-const io = socketIO(server);
+ const io = socketIO(server);
 
 
 
