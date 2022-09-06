@@ -12,15 +12,15 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-
+const app = express()
 
 const io = socketIO(server);
 
 
-express.use('/static', express.static(path.join(__dirname, "static")));
- express.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
- express.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
-express.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
+app.use('/static', express.static(path.join(__dirname, "static")));
+ app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+ app.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
+app.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
  
 
 
