@@ -2,34 +2,35 @@
 const express = require("express")
 const app = express()
 const http = require("https")
-const server = http.createServer(app)
-const io = require('socket.io')(server);
+//const server = http.createServer(app)
+const server  = app.listen(2095);
+
+//const io = require('socket.io')(server);
+const io = require('socket.io').listen(server);
+
 const fs = require('fs');
 
 const path = require('path');
-
-
+ 
 
 // use the express-static middleware
 app.use(express.static("public"))
 
 
-app.get('/', (req, res, next) => {
 
-    res.status(200).json({
-        status: 'success',
-        data: {
-            name: 'dj-clique-chatroom',
-            version: '0.1.0'
-        }
-    });
 
-});
 
+
+ 
 // define the first route
 //app.get("/", function (req, res) {
  // res.send("<h1>Hello World!</h1>")
 //})
+
+
+
+
+
 
 
 
