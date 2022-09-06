@@ -263,6 +263,4 @@ app.listen(3000, "0.0.0.0", function() {
 console.log("Listening on Port " +  process.env.PORT);
 });
 
-server.listen(3000, "0.0.0.0", function() {
-console.log("Listening on Port " +  process.env.PORT);
-});
+
