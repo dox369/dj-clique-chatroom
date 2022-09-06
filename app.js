@@ -27,8 +27,7 @@ const server = express()
 
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
-
-var express = require('express'); 
+ 
 var app = express();
 app.use(express.static(__dirname + '/static'));
 
