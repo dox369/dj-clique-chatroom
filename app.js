@@ -21,7 +21,7 @@ const io = socketio(server, {
     cors: {
         ///origin: `http://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
 	    
-	    origin: `https://dj-clique.com:3000`,
+	    origin: `https://dj-clique.com`,
         methods: ["GET", "POST"],
         credentials: true
       }
@@ -51,11 +51,7 @@ app.get('/', function (req, res) {
 });
 
  
-
-app.use('/static', express.static(path.join(__dirname, "static")));
- app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
- app.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
-app.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
+ 
 
 
 // usernames which are currently connected to the chat
@@ -261,7 +257,7 @@ io.on('connection', function(socket){
 
 
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT;
 
 app.listen(port, "0.0.0.0", function() {
 console.log("Listening on Port " +  process.env.PORT);
