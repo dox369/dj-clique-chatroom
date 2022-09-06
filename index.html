@@ -693,10 +693,719 @@ socket.on("image", function(info) {
 
 
 
-    <script>
+
+
+<script>
+
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+
+
+var currentVid;
+var currentVid2;
+
+
+function sendPause(){
+	document.getElementById("message").value = 'pause99';
+	document.getElementById("sendBtn").click();
+}
+function sendPlay(){
+	document.getElementById("message").value = 'play99';
+	document.getElementById("sendBtn").click();
+}
+function sendSeek(t){
+	//document.getElementById("message").value = 'seek99-'+t;
+	//document.getElementById("sendBtn").click();
+}
+function sendNext(){
+	document.getElementById("message").value = 'next99';
+	document.getElementById("sendBtn").click();
+}
+function sendPrev(){
+	document.getElementById("message").value = 'prev99';
+	document.getElementById("sendBtn").click();
+}
+function sendLoad(){
+	document.getElementById("message").value = 'load99';
+	document.getElementById("sendBtn").click();
+}
+
+function sendQueue(){
+	document.getElementById("message").value = 'queue99';
+	document.getElementById("sendBtn").click();
+}
+
+function sendFetch(){
+	document.getElementById("message").value = 'fetch99';
+	document.getElementById("sendBtn").click();
+}
+
+function sendRefresh(){
+	document.getElementById("message").value = 'refresh99';
+	document.getElementById("sendBtn").click();
+}
+
+function sendMute(){
+	document.getElementById("message").value = 'mute99';
+	document.getElementById("sendBtn").click();
+}
+
+function sendUnmute(){
+	document.getElementById("message").value = 'unmute99';
+	document.getElementById("sendBtn").click();
+}
+
+function repeatOn(){
+	document.getElementById("message").value = 'repeatOn99';
+	document.getElementById("sendBtn").click();
+}
+
+function repeatOff(){
+	document.getElementById("message").value = 'repeatOff99';
+	document.getElementById("sendBtn").click();
+}
+
+function shuffleOn(){
+	document.getElementById("message").value = 'shuffleOn99';
+	document.getElementById("sendBtn").click();
+}
+
+function shuffleOff(){
+	document.getElementById("message").value = 'shuffleOff99';
+	document.getElementById("sendBtn").click();
+}
+
+function keepAlive(){
+	document.getElementById("message").value = 'keepAlive99';
+	document.getElementById("sendBtn").click();
+}
+//------------------------------------------
+
+function sendVid(vid){
+
+var tempVid2
+	if (vid.indexOf("sendvid") >= 0) {
+			tempVid2 = vid;
+			tempVid2 = tempVid2.slice(8);
+			//alert(tempVid2);
+
+		}
+
+	document.getElementById("message").value = 'sendvid-'+tempVid2;
+	document.getElementById("sendBtn").click();
+}
+
+function seekTo(t){
+
+var tempTime2
+
+	if (t.indexOf("seekTo") >= 0) {
+			tempTime2 = t;
+			tempTime2 = tempTime2.slice(7);
+			//alert(tempTime2);
+
+		}
+
+	document.getElementById("message").value = 'seekTo-'+tempTime2;
+	document.getElementById("sendBtn").click();
+}
+
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+
+</script>
+
+
+
+
+<script>
+
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+
+
+
+
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+//================================================================================
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
  
 
+    <script>
+
+
+
+/**
+
+ * Get the value of a querystring
+
+ * @param  {String} field The field to get the value of
+
+ * @param  {String} url   The URL to get the value from (optional)
+
+ * @return {String}       The field value
+
+ */
+
+var getQueryString = function ( field, url ) {
+
+    var href = url ? url : window.location.href;
+
+    var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+
+    var string = reg.exec(href);
+
+    return string ? string[1] : null;
+
+};
+
+
+	var thisOne = getQueryString('room'); 
+	var myUserId = getQueryString('userid'); 
+
+//alert(thisOne);
+
+//---------------------------------------------------------
+
+
+//========================================================
+
+function escapeOutput(toOutput){
+
+    return toOutput.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#x27').replace('/','&#x2F');
+
+}
+
+var currentTrackTime = 0;
+var currentVideoid;
+//var numClients = 0;
+
+function getRandomizer(bottom, top) {
+
+    return function() {
+
+        return Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
+
+    }
+
+}
+//-------------------------------------------------------
+
+function sanitizeString(str){
+
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+
+    return str.trim();
+
+}
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+function connect(){
+
+
+        websocket = new WebSocket("ws://162.248.247.18:5060/?room="+thisOne+"&userid="+myUserId);
+
+        $('form').submit(function() {
+
+	
+
+            name = $('#name').val() ? $('#name').val() : 'Anonymous';
+
+            $('#name-div').hide();
+
+            $('#welcome').text('Hello ' + escapeOutput(name));
+
+if ($('#message').val() != ''){
+
+            websocket.send(JSON.stringify({
+
+                name:  name,
+
+                message: thisOne+'||'+myUserId+'||'+$('#message').val()
+
+            }));
+	}
+
+            $('#message').focus();
+
+            $('#message').val('');
+
+            return false;
+
+
+
+        });
+
+
+
+ 
+
+        websocket.onmessage = function(evt) {
+		
+		//console.log(roomid);
+		
+//-------------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------------
+
+		if (evt.data.indexOf("sendvid") >= 0 )   {
+
+			//alert(evt.data);
+			//var thisVid2;
+			var thisVid2 = evt.data;
+
+			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendvid-") + 8);
+
+			////alert('thisvid2:'+thisVid2);
+
+			top.postMessage("sendvid-"+thisVid2, 'http://djclique.com');
+			
+		}
+		if (evt.data.indexOf("seekTo") >= 0 )   {
+
+			//alert(evt.data);
+			//var thisTime2;
+			var thisTime2 = evt.data;
+
+			thisTime2 = thisTime2.substring(thisTime2.indexOf("seekTo-") + 7);
+
+			////alert('thisvid2:'+thisVid2);
+
+			top.postMessage("seekTo-"+thisTime2, 'http://djclique.com');
+			
+		}
+		if (evt.data.indexOf("play99") >= 0 )   {
+			//top.postMessage(currentTrackTime, 'http://djclique.com');
+			top.postMessage("playVideo", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("pause99") >= 0 )   {
+
+			top.postMessage("pauseVideo", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("seek99") >= 0 || evt.data.indexOf("seekVideo") >= 0 )   {
+
+			//top.postMessage("seekVideo-"+currentTrackTime, 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("next99") >= 0 )   {
+
+			top.postMessage("nextVideo", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("prev99") >= 0 )   {
+
+			top.postMessage("prevVideo", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("load99") >= 0 )   {
+
+			top.postMessage("loadList", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("queue99") >= 0 )   {
+
+			top.postMessage("queueList", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("fetch99") >= 0 )   {
+
+			top.postMessage("fetchList", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("refresh99") >= 0 )   {
+
+			top.postMessage("refreshPage", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("mute99") >= 0 )   {
+
+			top.postMessage("mute", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("unmute99") >= 0 )   {
+
+			top.postMessage("unmute", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("keepAlive99") >= 0 )   {
+
+			top.postMessage("keepAlive", 'http://djclique.com');
+
+		} 
+
+//-------------------------------------------------------
+//-------------------------------------------------
+//-------------------------------------------------------
+
+		if (evt.data.indexOf("repeatOn99") >= 0 )   {
+
+			top.postMessage("repeatOn", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("repeatOff99") >= 0 )   {
+
+			top.postMessage("repeatOff", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("shuffleOn99") >= 0 )   {
+
+			top.postMessage("shuffleOn", 'http://djclique.com');
+
+		}
+		if (evt.data.indexOf("shuffleOff99") >= 0 )   {
+
+			top.postMessage("shuffleOff", 'http://djclique.com');
+
+		}  
+		
+		
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+		if (evt.data.indexOf("TrackTimeID") ==-1 && evt.data.indexOf("pause99") ==-1 && evt.data.indexOf("play99") ==-1 && evt.data.indexOf("next99") ==-1 && evt.data.indexOf("prev99") ==-1 && evt.data.indexOf("onevid99") ==-1  && evt.data.indexOf("load99") ==-1 && evt.data.indexOf("sendvid") == -1 && evt.data.indexOf("seekTo") == -1 && evt.data.indexOf("repeatOn99") == -1 && evt.data.indexOf("repeatOff99") == -1 && evt.data.indexOf("shuffleOn99") == -1  && evt.data.indexOf("shuffleOff99") == -1  && evt.data.indexOf("keepAlive99") == -1 )   {
+
+
+            		$('#messages').append($('<li>').html(evt.data));
+			$('#messages').emoticonize();
+			
+
+			playSound('http://djclique.com/bing');
+		
+		} else {
+			//alert('postMessage/TrackTimeID is here...');
+		}
+
+		
+
+		//////console.log(evt.data);
+
+        };
+
+ 
+
+        websocket.onerror = function(evt) {
+
+            $('#messages').append($('<li>').text('<span style="color: red;">ERROR:</span> ' + evt.data));
+
+        };
+
+
+
+        websocket.onopen = function(evt) {
+
+         websocket.send(JSON.stringify({
+
+                name: name,
+
+                message: '[user has connected]'
+
+            }));
+		
+		//parent.location.reload();
+		
+
+        };
+
+
+
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+
+  websocket.onclose = function(e) {
+
+    console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+	//alert('Disconnected from Server... attempting to reconnect...');
+
+    setTimeout(function() {
+
+      connect();
+	///parent.document.getElementById("playlist").data = "http://djclique.com/playlists/?room=<%=request.querystring("room")%>&userid=<%=request.querystring("userid")%>"
+
+    }, 1000);
+
+  };
+
+
+}
+connect();
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+function sendTime2(client){
+
+setInterval(function(){ 
+
+         websocket.send(JSON.stringify({
+
+                name: name,
+
+                message: 'TrackTimeID---'+currentTrackTime
+			// message: currentTrackTime
+
+            }));
+
+    //console.log('someTime');
+
+    //client.send('TrackTimeID---someTime');
+
+
+	//console.log('TTIME:'+parent.currentTrackTime);
+	//console.log('TTIME:'+currentTrackTime);
+
+
+
+ }, 1000);
+
+}
+//sendTime2();
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+function test(){
+
+setInterval(function(){ 
+
+    //console.log('someTime');
+
+    //client.send('TrackTimeID---someTime');
+
+	//console.log('TTIME:'+parent.currentTrackTime);
+	//console.log('TTIME:'+currentTrackTime);
+
+	console(repeatStat);
+
+ }, 1000);
+
+}
+//test();
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+
     </script>
+
+
+
+
+
+
+    <script>
+
+
+           //top.postMessage('hello', 'http://djclique.com');
+
+
+window.onload = function () {
+		//top.postMessage(currentTrackTime, 'http://djclique.com');
+};
+
+
+
+        window.addEventListener( "message",
+
+          function (e) {
+
+                if(e.origin !== 'http://djclique.com'){ return; } 
+
+               //alert(e.data);
+		/////////////////console.log(e.data);
+		currentTrackTime = e.data;
+
+		var tempVid;
+		var tempTime;
+	
+		//alert(e.data);
+
+		if (e.data.indexOf("sendvid") >= 0) {
+			tempVid = e.data;
+			tempVid = tempVid.slice(8);
+			//alert(tempVid);
+			////alert(currentVid2);
+			currentVid2 = tempVid;
+			sendVid('sendvid-'+currentVid2);
+			/////alert('from messenger: '+currentVid2);
+			
+		}
+		if (e.data.indexOf("seekTo") >= 0) {
+			tempTime = e.data;
+			//tempTime = tempTime.slice(6);
+			//////tempTime = tempTime.replace(/-/g, "");	
+
+			//alert(tempTime);
+			////alert(currentVid2);
+			currentTime2 = tempTime;
+			seekTo('seekTo-'+currentTime2);
+			/////alert('from messenger: '+currentVid2);
+
+		}
+		if (e.data === 'playVideo') {
+			sendPlay();
+
+		}
+		if (e.data === 'pauseVideo') {
+			sendPause();
+
+		}
+		if (e.data === 'nextVideo') {
+			sendNext();
+		}
+		if (e.data === 'prevVideo') {
+			sendPrev();
+		}
+		if (e.data === 'loadList') {
+			sendLoad();
+		}
+		if (e.data === 'queueList') {
+			sendQueue();
+		}
+		if (e.data === 'fetchList') {
+			sendFetch();
+		}
+		if (e.data === 'refreshPage') {
+			sendRefresh();		
+		}
+		if (e.data === 'seekVideo') {
+			sendSeek();
+		
+		}
+		if (e.data === 'keepAlive') {
+			keepAlive();
+		
+		} 
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+		if (e.data === 'sendMute') {
+			sendMute();
+		}
+		if (e.data === 'sendUnmute') {
+			sendUnmute();
+
+		} 
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+		if (e.data === 'repeatOn') {
+			repeatOn();
+		}
+		if (e.data === 'repeatOff') {
+			repeatOff();
+		}
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+		if (e.data === 'shuffleOn') {
+			shuffleOn();
+		}
+		if (e.data === 'shuffleOff') {
+			shuffleOff();
+		}
+		
+//-------------------------------------------------------
+//-------------------------------------------------------		
+
+
+          },
+
+          false);
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+
+    </script>
+
+
+
+<script>
+//window.onload = function() {
+	//alert('player loaded successfully');
+//	parent.iframeLoaded = 1;
+//}
+
+</script>
+<div id="sound"></div>
 
 <div id="sound"></div>
 
