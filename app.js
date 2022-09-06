@@ -38,8 +38,10 @@ const path = require('path');
 
 
 //app.use(express.static(__dirname + '/static'));
-app.use('/static', express.static(path.join(__dirname, "static")));
- app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+app.use('/static', express.static(path.join(__dirname, "/static")));
+ app.use('/socket.io', express.static(path.join(__dirname, "/socket.io")));
+ app.use('/javascripts', express.static(path.join(__dirname, "/javascripts")));
+app.use('/stylesheets', express.static(path.join(__dirname, "/stylesheets")));
  
 
 // define the first route
