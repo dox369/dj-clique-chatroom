@@ -19,7 +19,13 @@ const io = socketio(server, {
       }
 });
 
-
+const io = socketio(server, {
+    cors: {
+        origin: `https://dj-clique.com`, // I copied the origin in the error message and pasted here
+        methods: ["GET", "POST"],
+        credentials: true
+      }
+});
 
 const fs = require('fs');
 
