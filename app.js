@@ -267,7 +267,7 @@ io.on('connection', function(socket){
 
 
 // start the server listening for requests
-app.listen(process.env.PORT || 2095, 
+app.listen(process.env.PORT || 80, 
 	() => console.log("Server is running..."));
 
 
