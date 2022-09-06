@@ -1,71 +1,36 @@
-// create an express app
-const express = require("express")
-const app = express()
-const http = require("http")
-const server = http.createServer(app)
-//const server  = app.listen(2095);
+//========================================================================================
+//========================================================================================
+//========================================================================================
+//========================================================================================
 
-///////const io = require('socket.io')(server);
-//const io = require('socket.io').listen(server);
-//const io = require('socket.io').listen();
-
-const socketio = require('socket.io');
-
-const io = socketio(server, {
-    cors: {
-        origin: `https://dj-clique-chatroom-new.herokuapp.com:3000`, // I copied the origin in the error message and pasted here
-        methods: ["GET", "POST"],
-        credentials: true
-      }
-});
-
-
-
-const fs = require('fs');
-
-const path = require('path');
  
+var express = require('express')
 
-// use the express-static middleware
-//app.use(express.static("public"))
-//app.use(express.static(__dirname + '/public'));
+  , app = express()
 
+  , http = require('http')
 
+  , server = http.createServer(app)
 
-
-//////app.use('/public', express.static(path.join(__dirname, "public")));
- 
-
-
-//app.use(express.static(__dirname + '/static'));
-app.use('/static', express.static(path.join(__dirname, "/static")));
- app.use('/socket.io', express.static(path.join(__dirname, "/socket.io")));
- app.use('/javascripts', express.static(path.join(__dirname, "/javascripts")));
-app.use('/stylesheets', express.static(path.join(__dirname, "/stylesheets")));
- 
-
-// define the first route
-//app.get("/", function (req, res) {
- // res.send("<h1>Hello World!</h1>")
-//})
+  , io = require('socket.io').listen(server);
+  
+var fs = require('fs'); // required for file serving
 
 
 
+//server.listen(3000);
+server.listen(3000);
 
-
-
+//server.listen(8080);
 
 
 // routing
 
 app.get('/', function (req, res) {
 
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendfile(__dirname + '/index.html');
 
 });
-
-
-
 
 
 
@@ -79,16 +44,16 @@ var usernames = {};
 
 var rooms = ['DJ Clique','Lobby','Admin','VIP'];
 
+//var roomId = 
+//rooms.push(roomId);
+
+
+//========================================================================================
 
 
 
 
-
-
-
-
-
-
+//rooms.push(roomId)
 
 
 
@@ -269,27 +234,6 @@ io.on('connection', function(socket){
 
 });
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-// start the server listening for requests
-app.listen(process.env.PORT || 3000, 
-	() => console.log("Server is running..."));
-
-
-
-
-
 
 
 
