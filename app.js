@@ -13,7 +13,7 @@ const socketio = require('socket.io');
 
 const io = socketio(server, {
     cors: {
-        origin: `http://dj-clique-chatroom-new.herokuapp.com/`, // I copied the origin in the error message and pasted here
+        origin: `https://dj-clique-chatroom-new.herokuapp.com/`, // I copied the origin in the error message and pasted here
         methods: ["GET", "POST"],
         credentials: true
       }
@@ -280,7 +280,7 @@ io.on('connection', function(socket){
 
 
 // start the server listening for requests
-app.listen(process.env.PORT || 3000, 
+app.listen(process.env.PORT || 80, 
 	() => console.log("Server is running..."));
 
 
