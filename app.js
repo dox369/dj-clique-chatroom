@@ -5,9 +5,21 @@ const http = require("http")
 const server = http.createServer(app)
 //const server  = app.listen(2095);
 
-const io = require('socket.io')(server);
+///////const io = require('socket.io')(server);
 //const io = require('socket.io').listen(server);
 //const io = require('socket.io').listen();
+
+const socketio = require('socket.io');
+
+const io = socketio(server, {
+    cors: {
+        origin: `http://dj-clique-chatroom-new.herokuapp.com/`, // I copied the origin in the error message and pasted here
+        methods: ["GET", "POST"],
+        credentials: true
+      }
+});
+
+
 
 const fs = require('fs');
 
