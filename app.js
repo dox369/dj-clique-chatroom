@@ -17,10 +17,10 @@ const app = express()
 const io = socketIO(server);
 
 
-app.use('/static', express.static(path.join(__dirname, "static")));
- app.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
- app.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
-app.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
+io.use('/static', express.static(path.join(__dirname, "static")));
+ io.use('/socket.io', express.static(path.join(__dirname, "socket.io")));
+ io.use('/javascripts', express.static(path.join(__dirname, "javascripts")));
+io.use('/stylesheets', express.static(path.join(__dirname, "stylesheets")));
  
 
 
