@@ -14,8 +14,8 @@ var express = require('express')
   , io = require('socket.io').listen(server);
 
 
-
-server.listen(3000);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT);
 
 
 
@@ -23,7 +23,7 @@ server.listen(3000);
 
 app.get('/', function (req, res) {
 
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 
 });
 
