@@ -23,9 +23,15 @@ const io = socketio(server, {
       }
 });
 
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+
 
 //server.listen(3000);
-server.listen(3000);
+//server.listen(3000);
+
+server.listen(process.env.PORT, '0.0.0.0');
 
 //server.listen(8080);
 
