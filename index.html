@@ -509,7 +509,7 @@ var tempVid2
 function sendCurr(vid){
 
 var tempVid2
-	if (vid.indexOf("sendcurr") >= 0) {
+	if (vid.indexOf("sendCurr") >= 0) {
 			tempVid2 = vid;
 			tempVid2 = tempVid2.slice(9);
 			//alert(tempVid2);
@@ -700,11 +700,11 @@ socket.on('connect', function () {
 			//var thisVid2;
 			var thisVid2 = data;
 
-			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendvid-") + 9);
+			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendcurr-") + 9);
 
 			////alert('thisvid2:'+thisVid2);
 
-			top.postMessage("sendvid-"+thisVid2, 'https://djclique.com');
+			top.postMessage("sendcurr-"+thisVid2, 'https://djclique.com');
 			
 		}
 		if (data.indexOf("seekTo") >= 0 )   {
