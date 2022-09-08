@@ -402,7 +402,7 @@ ul {
 
 var currentVid;
 var currentVid2;
-
+var currIndex;
 
 function sendPause(){
 	document.getElementById("data").value = 'pause99';
@@ -478,6 +478,17 @@ function keepAlive(){
 	document.getElementById("data").value = 'keepAlive99';
 	document.getElementById("datasend").click();
 }
+
+function regPlay() {
+
+	
+	document.getElementById("data").value = 'regPlay99';
+	document.getElementById("datasend").click();
+
+	///currIndex
+}
+	
+	
 //------------------------------------------
 
 function sendVid(vid){
@@ -493,6 +504,22 @@ var tempVid2
 	document.getElementById("data").value = 'sendvid-'+tempVid2;
 	document.getElementById("datasend").click();
 }
+	
+	
+function sendCurr(vid){
+
+var tempVid2
+	if (vid.indexOf("sendcurr") >= 0) {
+			tempVid2 = vid;
+			tempVid2 = tempVid2.slice(9);
+			//alert(tempVid2);
+
+		}
+
+	document.getElementById("data").value = 'sendcurr-'+tempVid2;
+	document.getElementById("datasend").click();
+}
+	
 
 function seekTo(t){
 
@@ -667,6 +694,19 @@ socket.on('connect', function () {
 			top.postMessage("sendvid-"+thisVid2, 'https://djclique.com');
 			
 		}
+		if (data.indexOf("sendcurr") >= 0 )   {
+
+			//alert(data);
+			//var thisVid2;
+			var thisVid2 = data;
+
+			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendvid-") + 9);
+
+			////alert('thisvid2:'+thisVid2);
+
+			top.postMessage("sendvid-"+thisVid2, 'https://djclique.com');
+			
+		}
 		if (data.indexOf("seekTo") >= 0 )   {
 
 			//alert(data);
@@ -774,7 +814,7 @@ socket.on('connect', function () {
 
 		
 
-if (data != '' && data.indexOf("TrackTimeID") ==-1 && data.indexOf("pause99") ==-1 && data.indexOf("play99") ==-1 && data.indexOf("next99") ==-1 && data.indexOf("prev99") ==-1 && data.indexOf("onevid99") ==-1  && data.indexOf("load99") ==-1 && data.indexOf("sendvid") == -1 && data.indexOf("seekTo") == -1 && data.indexOf("repeatOn99") == -1 && data.indexOf("repeatOff99") == -1 && data.indexOf("shuffleOn99") == -1  && data.indexOf("shuffleOff99") == -1  && data.indexOf("keepAlive99") == -1 )   {
+if (data != '' && data.indexOf("TrackTimeID") ==-1 && data.indexOf("pause99") ==-1 && data.indexOf("play99") ==-1 && data.indexOf("next99") ==-1 && data.indexOf("prev99") ==-1 && data.indexOf("onevid99") ==-1  && data.indexOf("load99") ==-1 && data.indexOf("sendvid") == -1 && data.indexOf("seekTo") == -1 && data.indexOf("repeatOn99") == -1 && data.indexOf("repeatOff99") == -1 && data.indexOf("shuffleOn99") == -1  && data.indexOf("shuffleOff99") == -1  && data.indexOf("keepAlive99") == -1  && data.indexOf("sendcurr99") == -1   && data.indexOf("regPlay99") == -1)   {
 
 
 //-----------------------------------------------------------------------------------------
@@ -988,6 +1028,7 @@ window.onload = function(e){
 		
 		/////////////////console.log(e.data);
 		currentTrackTime = e.data;
+		/////currentTrackTime = e.data;
 
 		var tempVid;
 		var tempTime;
@@ -1001,6 +1042,16 @@ window.onload = function(e){
 			////alert(currentVid2);
 			currentVid2 = tempVid;
 			sendVid('sendvid-'+currentVid2);
+			/////alert('from messenger: '+currentVid2);
+			
+		}
+		if (e.data.indexOf("sendcurr") >= 0) {
+			tempVid = e.data;
+			tempVid = tempVid.slice(9);
+			//alert(tempVid);
+			////alert(currentVid2);
+			currentVid2 = tempVid;
+			regPlay('sendcurr-'+currentVid2);
 			/////alert('from messenger: '+currentVid2);
 			
 		}
