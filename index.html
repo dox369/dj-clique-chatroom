@@ -479,10 +479,10 @@ function keepAlive(){
 	document.getElementById("datasend").click();
 }
 
-function regPlay() {
+function regPlay(x) {
 
 	
-	document.getElementById("data").value = 'regPlay99';
+	document.getElementById("data").value = 'sendcurr-'+x;
 	document.getElementById("datasend").click();
 
 	///currIndex
@@ -702,7 +702,7 @@ socket.on('connect', function () {
 
 			thisVid2 = thisVid2.substring(thisVid2.indexOf("sendcurr-") + 9);
 
-			alert('thisvid2:'+thisVid2);
+			////alert('thisvid2:'+thisVid2);
 
 			top.postMessage("sendcurr-"+thisVid2, 'https://djclique.com');
 			
@@ -1051,7 +1051,7 @@ window.onload = function(e){
 			//alert(tempVid);
 			////alert(currentVid2);
 			currentVid2 = tempVid;
-			regPlay('sendcurr-'+currentVid2);
+			regPlay(currentVid2);
 			/////alert('from messenger: '+currentVid2);
 			
 		}
