@@ -17,9 +17,17 @@ const io = require("socket.io")(server,{
 });
 */
 
-const io = new Server(httpServer, {
+const io = new server(httpServer, {
   allowEIO3: true // false by default
 });
+
+/*
+const io = require("socket.io")();
+
+//listening socket io on different port
+io.listen(4000);
+*/
+
 
 io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
