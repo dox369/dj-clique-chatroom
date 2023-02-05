@@ -15,6 +15,10 @@ const io = require("socket.io")(server,{
   }
 });
 
+const io = new Server(httpServer, {
+  allowEIO3: true // false by default
+});
+
 io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
   socket.on('messaged', (args) => {
