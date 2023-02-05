@@ -17,16 +17,17 @@ const io = require("socket.io")(server,{
 });
 */
 
+/*
 const io = new server(httpServer, {
   allowEIO3: true // false by default
 });
+*/
 
-/*
 const io = require("socket.io")();
 
 //listening socket io on different port
 io.listen(4000);
-*/
+
 
 
 io.on('connection', (socket) => {
