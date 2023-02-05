@@ -11,7 +11,7 @@ const server = express()
 
 const io = require("socket.io")(server,{
 	
-	  allowEIO3: true // false by default,
+	  allowEIO3: true, // false by default
 	
   cors: {
     origins: "*:*",
