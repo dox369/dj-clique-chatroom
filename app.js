@@ -11,8 +11,12 @@ var express = require('express')
 
   , server = http.createServer(app)
 
-  , io = require('socket.io').listen(server);
+  //, io = require('socket.io').listen(server);
 
+//var io = io("socket-lb02.onrender.com", {transports: ['websocket']});
+
+
+const io = require('socket.io');
 
 const PORT = process.env.PORT || 3000;
 //server.listen(PORT);
