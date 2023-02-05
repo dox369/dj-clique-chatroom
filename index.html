@@ -1,11 +1,6 @@
-
 <html>
 <head>
 
-	
-	
-	
-	
 	
 	<script>
 		
@@ -16,10 +11,6 @@ window.addEventListener('message', function(e) {
 		
 	</script>
 
-	
-	
-	
-	
   <style>
 
 
@@ -374,15 +365,7 @@ ul {
 
 </head>
 <body>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
        <script type="text/javascript">
 
             /**
@@ -635,16 +618,17 @@ function sanitizeString(str){
 //=========================================================================================
 
 
-var socket = io.connect("wss://djclique-chatroom.onrender.com");
+var socket = io.connect('wss://dj-clique-chatroom-new.herokuapp.com')
 
-	//var socket = io("wss://djclique-chatroom.onrender.com", {transports: ['websocket']});
 
 
 var tryReconnect = function(){
 
- 
 
-    if (socket.socket.connected === false && socket.socket.connecting === false) {
+
+    if (socket.socket.connected === false &&
+
+        socket.socket.connecting === false) {
 
         // use a connect() or reconnect() here if you want
 
