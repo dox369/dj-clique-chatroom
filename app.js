@@ -8,14 +8,14 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-/*
+
 const io = require("socket.io")(server,{
   cors: {
     origins: "*:*",
     methods: ["GET", "POST"]
   }
 });
-*/
+
 
 /*
 const io = new server(httpServer, {
@@ -23,9 +23,9 @@ const io = new server(httpServer, {
 });
 */
 
-const io = require("socket.io")();
+////////const io = require("socket.io")();
 
-//listening socket io on different port
+//////////listening socket io on different port
 io.listen(4000);
 
 
