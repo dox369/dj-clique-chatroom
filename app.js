@@ -46,7 +46,7 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
-
+*/
 
 // routing
 
@@ -56,7 +56,6 @@ app.get('/', function (req, res) {
 
 });
 
-*/
 
 
 
@@ -86,7 +85,7 @@ var rooms = ['DJ Clique','Lobby','Admin','VIP'];
 
 
 
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
 
 
 
