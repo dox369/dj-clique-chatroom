@@ -618,17 +618,15 @@ function sanitizeString(str){
 //=========================================================================================
 
 
-//var socket = io.connect('wss://djclique7.onrender.com')
-var socket = io("wss://djclique8.onrender.com", {transports: ['websocket']});
+var socket = io.connect('wss://djclique9.onrender.com')
+//var socket = io("wss://djclique8.onrender.com", {transports: ['websocket']});
 
 
 var tryReconnect = function(){
 
+/*
 
-
-    if (socket.socket.connected === false &&
-
-        socket.socket.connecting === false) {
+    if (socket.socket.connected === false && socket.socket.connecting === false) {
 
         // use a connect() or reconnect() here if you want
 
@@ -637,6 +635,8 @@ var tryReconnect = function(){
 	//socket.socket.reconnect()
 
    }
+   
+   */
 
 }
 
