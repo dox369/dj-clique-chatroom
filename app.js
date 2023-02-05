@@ -46,7 +46,6 @@ const PORT = process.env.PORT || 3000;
 //server.listen(PORT);
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-*/
 
 
 
@@ -58,7 +57,9 @@ app.get('/', function (req, res) {
 
 });
 
-
+*/
+	
+	
 
 // usernames which are currently connected to the chat
 
