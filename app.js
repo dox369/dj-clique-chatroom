@@ -11,7 +11,7 @@ const server = express()
 
 const io = require("socket.io")(server,{
 	
-	  allowEIO3: true, // false by default
+	 //// allowEIO3: true, // false by default
 	
   cors: {
     origins: "*:*",
@@ -29,7 +29,7 @@ const io = new server(httpServer, {
 ////////const io = require("socket.io")();
 
 //////////listening socket io on different port
-///////io.listen(4000);
+io.listen(4000);
 
 
 
