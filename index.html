@@ -635,7 +635,7 @@ function sanitizeString(str){
 
 
 //var socket = io.connect('ws://djclique-chatroom.onrender.com')
- var socket = io("wss://djclique-chatroom.onrender.com:10000", {transports: ['websocket']});
+ var socket = io("wss://djclique-chatroom.onrender.com", {transports: ['websocket']});
 
 
 var tryReconnect = function(){
