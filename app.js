@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const socketIO = require('socket.io');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 const INDEX = '/index.html';
 
 const server = express()
@@ -29,7 +29,7 @@ const io = new server(httpServer, {
 ////////const io = require("socket.io")();
 
 //////////listening socket io on different port
-io.listen(4000);
+io.listen(10000);
 
 
 
