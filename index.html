@@ -2,6 +2,29 @@
 <head>
 
 	
+	
+	
+	<script>
+    try{
+      console.log("msg")
+      var socket = io("djclique-chatroom.onrender.com", {transports: ['websocket']});
+      socket.on('message', function(msg){
+        console.log(msg)
+        el = document.getElementById('server-time');
+        el.innerHTML = 'Message ' + msg;
+      });
+      setInterval(() => {
+        count++
+        socket.emit('messaged',"count")
+        console.log(count)
+      }, 1000);
+    }catch (error){
+      alert(error)
+    };
+  </script>
+	
+	
+	
 	<script>
 		
 window.addEventListener('message', function(e) {
