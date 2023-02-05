@@ -26,7 +26,7 @@ const io = new server(httpServer, {
 const io = require("socket.io")();
 
 //listening socket io on different port
-io.listen(3000);
+io.listen(4000);
 
 
 
