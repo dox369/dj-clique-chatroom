@@ -619,7 +619,7 @@ function sanitizeString(str){
 
 
 //var socket = io.connect('wss://dj-clique-chatroom-new.herokuapp.com:4000')
-var socket = io("dj-clique-chatroom-new.herokuapp.com:4000", {transports: ['websocket']});
+var socket = io("wss://dj-clique-chatroom-new.herokuapp.com:4000", {transports: ['websocket']});
 
 
 var tryReconnect = function(){
