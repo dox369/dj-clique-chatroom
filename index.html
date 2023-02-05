@@ -381,25 +381,6 @@ ul {
 	
 	
 	
-	<script>
-    try{
-      console.log("msg")
-      var socket = io("wss://djclique-chatroom.onrender.com", {transports: ['websocket']});
-      socket.on('message', function(msg){
-        console.log(msg)
-        el = document.getElementById('server-time');
-        el.innerHTML = 'Message ' + msg;
-      });
-      setInterval(() => {
-        count++
-        socket.emit('messaged',"count")
-        console.log(count)
-      }, 1000);
-    }catch (error){
-      alert(error)
-    };
-  </script>
-	
 	
        <script type="text/javascript">
 
@@ -653,7 +634,7 @@ function sanitizeString(str){
 //=========================================================================================
 
 
-var socket = io.connect('wss://djclique-chatroom.onrender.com')
+var socket = io.connect('ws://djclique-chatroom.onrender.com')
 
 
 
