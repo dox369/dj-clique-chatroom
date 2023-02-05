@@ -8,12 +8,14 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
+/*
 const io = require("socket.io")(server,{
   cors: {
     origins: "*:*",
     methods: ["GET", "POST"]
   }
 });
+*/
 
 const io = new Server(httpServer, {
   allowEIO3: true // false by default
